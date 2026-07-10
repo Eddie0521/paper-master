@@ -19,13 +19,13 @@ The destination is **mastery**: by the end, you can restate the paper's motivati
 
 ## Install
 
-Requires [bun](https://bun.sh) (runtime for the fetch script; first run auto-installs dependencies, needs network).
-
 ```bash
-./sync.sh   # copies the skill to ~/.claude/skills/ and ~/.agents/skills/
+npx skills add Eddie0521/paper-reader
 ```
 
-`~/.claude/skills/` serves Claude Code; `~/.agents/skills/` serves other agents that read the shared skills directory.
+Requires [bun](https://bun.sh) (runtime for the fetch script; first run auto-installs dependencies, needs network). The repo is private — the installing machine needs GitHub credentials.
+
+Local development: clone this repo, make changes, then run `./sync.sh` to distribute directly to `~/.claude/skills/` (Claude Code) and `~/.agents/skills/` (other agents reading the shared skills directory).
 
 ## Usage
 

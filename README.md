@@ -19,13 +19,13 @@
 
 ## 安装
 
-需要 [bun](https://bun.sh)（抓取脚本的运行时；首次运行自动装依赖，需联网）。
-
 ```bash
-./sync.sh   # 拷贝 skill 到 ~/.claude/skills/ 与 ~/.agents/skills/
+npx skills add Eddie0521/paper-reader
 ```
 
-`~/.claude/skills/` 给 Claude Code 用，`~/.agents/skills/` 给其他兼容 skills 目录的 agent 用。
+需要 [bun](https://bun.sh)（抓取脚本的运行时；首次运行自动装依赖，需联网）。仓库为 private，安装的机器上需有 GitHub 访问凭证。
+
+本地开发：克隆本仓库改动后，跑 `./sync.sh` 直接分发到 `~/.claude/skills/`（Claude Code）与 `~/.agents/skills/`（其他兼容 skills 目录的 agent）。
 
 ## 使用
 
