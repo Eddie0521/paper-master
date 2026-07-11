@@ -4,7 +4,7 @@
 
 # Paper-Reader
 
-> A Claude Code skill for progressively deep-reading one paper — calibration, reading plan, layer-by-layer teaching, final recital, and a Feynman archive.
+> A Claude Code skill for progressively deep-reading one paper — calibration, reading plan, layer-by-layer teaching, final recital, and a reading archive.
 
 The destination is **mastery**: by the end, you can restate the paper's motivation, method, and chain of evidence in your own words, and answer "why was it designed this way" questions. Finishing the lecture is not finishing the read — only a passing recital counts.
 
@@ -14,7 +14,7 @@ The destination is **mastery**: by the end, you can restate the paper's motivati
 - **Calibration against redundancy** — check off concepts you already know before teaching starts; gaps found mid-lecture trigger an on-the-spot **dive**
 - **Reading plan as the map** — every node marked detailed / brief / skip, progress persisted on disk, resumable across sessions
 - **Checks and the recital** — 1-2 open-ended questions per layer; at the end you restate motivation → method → evidence in your own words
-- **Feynman archive** — your recital + the holes found in it + key Q&A, archived; a learning log accumulates across papers so each read gets cheaper
+- **Reading archive** — your recital + the holes found in it + key Q&A, archived; a learning log accumulates across papers so each read gets cheaper
 - **Standalone fetch script** — unpdf for PDFs (sidesteps WebFetch's stack overflow on large PDFs), arXiv source selection (official HTML → ar5iv → PDF), Readability for web pages, jina/defuddle proxy fallback
 
 ## Install
@@ -46,7 +46,7 @@ Local development: clone this repo, make changes, then run `./sync.sh` to distri
 | 5 | Orientation | What the paper claims, why it matters, which conversation it joins |
 | 6 | Layer by layer | Examples + diagrams + links to prior knowledge; gates control pace, each layer ends with a check |
 | 7 | Recital | Restate motivation → method → evidence; holes pointed out against the source |
-| 8 | Archive | Feynman archive + learning-log append |
+| 8 | Archive | Reading archive + learning-log append |
 
 ## Data layout
 
@@ -56,7 +56,7 @@ Local development: clone this repo, make changes, then run `./sync.sh` to distri
 │   ├── paper.md       # full text as markdown
 │   ├── citations/     # key citations
 │   ├── plan.md        # reading plan + progress (the resume anchor)
-│   └── archive.md     # Feynman archive
+│   └── archive.md     # reading archive
 └── learning-log.md    # global learning log, append-only
 ```
 

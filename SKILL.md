@@ -1,6 +1,6 @@
 ---
 name: paper-reader
-description: 渐进式精读一篇论文——摸底、阅读计划、按层讲解、终考复述，产出费曼档案。带 URL/路径开新篇，无参数续读。
+description: 渐进式精读一篇论文——摸底、阅读计划、按层讲解、终考复述，产出阅读档案。带 URL/路径开新篇，无参数续读。
 disable-model-invocation: true
 ---
 
@@ -77,7 +77,6 @@ disable-model-invocation: true
 
 ### 8. 归档
 
-- 写 `<slug>/archive.md`（**费曼档案**）：用户复述原文（少编辑）+ 指出的漏洞 + 会话关键问答 + 最终计划快照。
+- 写 `<slug>/archive.md`（**阅读档案**）：用户复述原文（少编辑）+ 指出的漏洞 + 会话关键问答 + 最终计划快照。
 - `learning-log.md` 追加本次学到的概念（含下潜补讲的），一行一条。
 - `plan.md` 状态改"已终考"。
-- 问一句：要不要用 /wiki-write 把这篇存进 wiki（可选）。
