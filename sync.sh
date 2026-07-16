@@ -6,8 +6,9 @@ set -euo pipefail
 SRC="$(cd "$(dirname "$0")" && pwd)"
 
 for DEST in "$HOME/.claude/skills/paper-reader" "$HOME/.agents/skills/paper-reader"; do
-  mkdir -p "$DEST/scripts"
+  mkdir -p "$DEST/scripts" "$DEST/references"
   cp "$SRC/SKILL.md" "$SRC/FORMATS.md" "$DEST/"
+  cp "$SRC/references/"*.md "$DEST/references/"
   cp "$SRC/scripts/fetch-paper.ts" "$DEST/scripts/"
   echo "✓ $DEST"
 done

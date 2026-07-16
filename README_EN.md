@@ -4,18 +4,22 @@
 
 # Paper-Reader
 
-> A Claude Code skill for progressively deep-reading one paper — calibration, reading plan, layer-by-layer teaching, final recital, and a reading archive.
+> An omniscient paper Claude Code skill — deep read, Q&A, cross-paper synthesis, and domain exploration, all in one place.
 
-The destination is **mastery**: by the end, you can restate the paper's motivation, method, and chain of evidence in your own words, and answer "why was it designed this way" questions. Finishing the lecture is not finishing the read — only a passing recital counts.
+## Four modes
+
+| Mode | Example trigger | Output |
+|------|----------------|--------|
+| **Deep read** | `/paper-reader https://arxiv.org/abs/...` | Reading archive + deep-read card |
+| **Ask** | `/paper-reader what dataset does this paper use` | Shallow card (hard-grounded answers) |
+| **Cross-read** | `/paper-reader what do my multi-agent WM papers have in common` | Optional `syntheses/` |
+| **Explore** | `/paper-reader explore world model memory mechanisms` | `explorations/` domain map |
 
 ## Features
 
-- **Three-layer skeleton** — Prerequisites → Landscape → The Paper, taught outside-in
-- **Calibration against redundancy** — check off concepts you already know before teaching starts; gaps found mid-lecture trigger an on-the-spot **dive**
-- **Reading plan as the map** — every node marked detailed / brief / skip, progress persisted on disk, resumable across sessions
-- **Checks and the recital** — 1-2 open-ended questions per layer; at the end you restate motivation → method → evidence in your own words
-- **Reading archive** — your recital + the holes found in it + key Q&A, archived; a learning log accumulates across papers so each read gets cheaper
-- **Standalone fetch script** — unpdf for PDFs (sidesteps WebFetch's stack overflow on large PDFs), arXiv source selection (official HTML → ar5iv → PDF), Readability for web pages, jina/defuddle proxy fallback
+- **Paper cards** — every ingested paper auto-generates `card.md` as the query surface for cross-read and ask; deep read → "精读", ask → "浅读"
+- **Deep-read teaching loop** — three-layer skeleton, calibration, checks, final recital (see `references/deep-read.md`)
+- **Reuses web-search skill** — leverages the web-search skill when available; built-in `fetch-paper.ts` as fallback
 
 ## Install
 
@@ -23,59 +27,49 @@ The destination is **mastery**: by the end, you can restate the paper's motivati
 npx skills add Eddie0521/paper-reader
 ```
 
-Requires [bun](https://bun.sh) (runtime for the fetch script; first run auto-installs dependencies, needs network). The repo is private — the installing machine needs GitHub credentials.
+### Requires bun
 
-Local development: clone this repo, make changes, then run `./sync.sh` to distribute directly to `~/.claude/skills/` (Claude Code) and `~/.agents/skills/` (other agents reading the shared skills directory).
+The fetch script `scripts/fetch-paper.ts` runs on [bun](https://bun.sh). Without bun, ask / cross-read / resume still work, but URL fetching falls back to flaky WebFetch.
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+On macOS you can also use Homebrew: `brew install oven-sh/bun/bun`
 
 ## Usage
 
 ```
-/paper-reader https://arxiv.org/abs/2501.12948   # start a new deep read from a URL
-/paper-reader ~/papers/attention.pdf             # local PDF
-/paper-reader                                    # no args: list unfinished papers, resume
+/paper-reader https://arxiv.org/abs/2501.12948        # deep read (default)
+/paper-reader ~/papers/attention.pdf                  # local PDF
+/paper-reader how does MultiWorld's MACM module work  # ask
+/paper-reader common themes in my world model papers  # cross-read
+/paper-reader explore multi-agent video world models  # explore
+/paper-reader                                         # resume unfinished deep read
 ```
-
-## How it works
-
-| # | Step | What happens |
-|---|------|--------------|
-| 1 | Absorb | Fetch full text as markdown, read it through |
-| 2 | Key citations | Pick 2-4: direct predecessor / main baseline / benchmark paper, fetch each |
-| 3 | Calibration | List nodes across three layers, check off prerequisites you already know |
-| 4 | Reading plan | Mark each node detailed / brief / skip; you edit, then teaching starts |
-| 5 | Orientation | What the paper claims, why it matters, which conversation it joins |
-| 6 | Layer by layer | Examples + diagrams + links to prior knowledge; gates control pace, each layer ends with a check |
-| 7 | Recital | Restate motivation → method → evidence; holes pointed out against the source |
-| 8 | Archive | Reading archive + learning-log append |
 
 ## Data layout
 
 ```
 ~/.claude/paper-reader/
-├── <slug>/            # one folder per paper
-│   ├── paper.md       # full text as markdown
-│   ├── citations/     # key citations
-│   ├── plan.md        # reading plan + progress (the resume anchor)
-│   └── archive.md     # reading archive
-└── learning-log.md    # global learning log, append-only
+├── <slug>/
+│   ├── paper.md       # full text
+│   ├── card.md        # paper card (machine query surface)
+│   ├── plan.md        # reading plan (deep read)
+│   ├── archive.md     # reading archive (after recital)
+│   └── citations/     # key citations
+├── learning-log.md    # concept log
+├── syntheses/         # cross-read outputs (optional)
+└── explorations/      # domain maps
 ```
-
-## Using the fetch script standalone
-
-```bash
-bun scripts/fetch-paper.ts <URL|local-PDF-path> [output.md]
-```
-
-Without an output path the body goes to stdout; source and stats go to stderr. Any arXiv link form (abs/pdf/html) is normalized to the best full-text source. Single file, zero node_modules — runs from anywhere.
 
 ## Repo structure
 
 | File | Purpose |
 |------|---------|
-| `SKILL.md` | Skill entry: flow and rules |
-| `FORMATS.md` | File templates for plan / archive / learning-log |
-| `scripts/fetch-paper.ts` | Standalone fetch script (single file) |
-| `sync.sh` | Distributes to both skills install locations |
+| `SKILL.md` | Routing + shared conventions |
+| `references/` | Four mode flows (deep-read / ask / cross-read / explore) |
+| `FORMATS.md` | File templates |
+| `scripts/fetch-paper.ts` | Built-in fetch script (fallback) |
+| `sync.sh` | Distributes to skills install locations |
 | `CONTEXT.md` | Domain vocabulary (design doc, not distributed) |
-
-This repo is the single source of truth: edit here, run `./sync.sh` to distribute; don't edit the installed copies.
