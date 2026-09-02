@@ -80,7 +80,7 @@ async function fetchOne(url: string, useProxy: boolean): Promise<Result> {
       signal: AbortSignal.timeout(30000),
       redirect: "follow",
       headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; paper-reader/1.0)",
+        "User-Agent": "Mozilla/5.0 (compatible; paper-master/1.0)",
         Accept: "text/html,application/pdf,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       },
     });

@@ -10,10 +10,10 @@
 
 | Mode | Example trigger | Output |
 |------|----------------|--------|
-| **Deep read** | `/paper-reader https://arxiv.org/abs/...` | Reading archive + deep-read card |
-| **Ask** | `/paper-reader what dataset does this paper use` | Shallow card (hard-grounded answers) |
-| **Cross-read** | `/paper-reader what do my multi-agent WM papers have in common` | Optional `syntheses/` |
-| **Explore** | `/paper-reader explore world model memory mechanisms` | `explorations/` domain map |
+| **Deep read** | `/paper-master https://arxiv.org/abs/...` | Reading archive + deep-read card |
+| **Ask** | `/paper-master what dataset does this paper use` | Shallow card (hard-grounded answers) |
+| **Cross-read** | `/paper-master what do my multi-agent WM papers have in common` | Optional `syntheses/` |
+| **Explore** | `/paper-master explore world model memory mechanisms` | `explorations/` domain map |
 
 ## Features
 
@@ -24,7 +24,7 @@
 ## Install
 
 ```bash
-npx skills add Eddie0521/paper-reader
+npx skills add Eddie0521/paper-master
 ```
 
 ### Requires bun
@@ -40,18 +40,18 @@ On macOS you can also use Homebrew: `brew install oven-sh/bun/bun`
 ## Usage
 
 ```
-/paper-reader https://arxiv.org/abs/2501.12948        # deep read (default)
-/paper-reader ~/papers/attention.pdf                  # local PDF
-/paper-reader how does MultiWorld's MACM module work  # ask
-/paper-reader common themes in my world model papers  # cross-read
-/paper-reader explore multi-agent video world models  # explore
-/paper-reader                                         # resume unfinished deep read
+/paper-master https://arxiv.org/abs/2501.12948        # deep read (default)
+/paper-master ~/papers/attention.pdf                  # local PDF
+/paper-master how does MultiWorld's MACM module work  # ask
+/paper-master common themes in my world model papers  # cross-read
+/paper-master explore multi-agent video world models  # explore
+/paper-master                                         # resume unfinished deep read
 ```
 
 ## Data layout
 
 ```
-~/.claude/paper-reader/
+~/.claude/paper-master/
 ├── <slug>/
 │   ├── paper.md       # full text
 │   ├── card.md        # paper card (machine query surface)

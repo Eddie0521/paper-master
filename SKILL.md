@@ -1,5 +1,5 @@
 ---
-name: paper-reader
+name: paper-master
 description: 论文全知者——精读、问答、跨篇综合、领域探索。带 URL/路径或自然语言开新任务，无参数续读精读。
 disable-model-invocation: true
 ---
@@ -8,10 +8,10 @@ disable-model-invocation: true
 
 个人论文知识库的全知接口：读过的一切可查询综合，任意论文可任意粒度问答，未知领域可探索成图。四个模式共用一个 skill，由入口参数路由。
 
-**数据落位**：`~/.claude/paper-reader/`（首次使用时创建）
+**数据落位**：`~/.claude/paper-master/`（首次使用时创建）
 
 ```
-~/.claude/paper-reader/
+~/.claude/paper-master/
 ├── <slug>/              # 一篇论文一夹
 │   ├── paper.md         # 全文 markdown
 │   ├── card.md          # 论文卡片（机器查询面）
@@ -31,7 +31,7 @@ disable-model-invocation: true
 
 ## 路由
 
-解析 `/paper-reader` 参数，按以下规则选模式（流程细节见 `references/` 对应文件）：
+解析 `/paper-master` 参数，按以下规则选模式（流程细节见 `references/` 对应文件）：
 
 | 信号 | 模式 | 参考 |
 |---|---|---|

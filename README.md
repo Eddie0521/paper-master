@@ -10,10 +10,10 @@
 
 | 模式 | 触发示例 | 产物 |
 |------|---------|------|
-| **精读** | `/paper-reader https://arxiv.org/abs/...` | 阅读档案 + 精读卡片 |
-| **问答** | `/paper-reader 这篇的数据集是什么` | 浅读卡片（硬 grounding 回答） |
-| **跨篇** | `/paper-reader 我读过的多 agent WM 有什么共性` | 可选 `syntheses/` |
-| **探索** | `/paper-reader 探索 world model 记忆机制` | `explorations/` 领域地图 |
+| **精读** | `/paper-master https://arxiv.org/abs/...` | 阅读档案 + 精读卡片 |
+| **问答** | `/paper-master 这篇的数据集是什么` | 浅读卡片（硬 grounding 回答） |
+| **跨篇** | `/paper-master 我读过的多 agent WM 有什么共性` | 可选 `syntheses/` |
+| **探索** | `/paper-master 探索 world model 记忆机制` | `explorations/` 领域地图 |
 
 ## 特性
 
@@ -24,7 +24,7 @@
 ## 安装
 
 ```bash
-npx skills add Eddie0521/paper-reader
+npx skills add Eddie0521/paper-master
 ```
 
 ### 需要 bun
@@ -40,18 +40,18 @@ macOS 也可用 Homebrew：`brew install oven-sh/bun/bun`
 ## 使用
 
 ```
-/paper-reader https://arxiv.org/abs/2501.12948        # 精读（默认）
-/paper-reader ~/papers/attention.pdf                  # 本地 PDF
-/paper-reader MultiWorld 的 MACM 模块怎么工作的       # 问答
-/paper-reader 我读过的 world model 论文有什么共性     # 跨篇
-/paper-reader 探索 multi-agent video world model    # 探索
-/paper-reader                                         # 续读未终考的精读
+/paper-master https://arxiv.org/abs/2501.12948        # 精读（默认）
+/paper-master ~/papers/attention.pdf                  # 本地 PDF
+/paper-master MultiWorld 的 MACM 模块怎么工作的       # 问答
+/paper-master 我读过的 world model 论文有什么共性     # 跨篇
+/paper-master 探索 multi-agent video world model    # 探索
+/paper-master                                         # 续读未终考的精读
 ```
 
 ## 数据落位
 
 ```
-~/.claude/paper-reader/
+~/.claude/paper-master/
 ├── <slug>/
 │   ├── paper.md       # 全文
 │   ├── card.md        # 论文卡片（机器查询面）
