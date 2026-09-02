@@ -1,4 +1,4 @@
-# Paper-Reader
+# Paper-Master
 
 为「论文全知者」skill（斜杠命令 `/paper-master`）设计的领域模型。本文件只是词汇表，不含实现细节。
 

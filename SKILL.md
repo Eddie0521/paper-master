@@ -4,7 +4,7 @@ description: 论文全知者——精读、问答、跨篇综合、领域探索�
 disable-model-invocation: true
 ---
 
-# Paper-Reader
+# Paper-Master
 
 个人论文知识库的全知接口：读过的一切可查询综合，任意论文可任意粒度问答，未知领域可探索成图。四个模式共用一个 skill，由入口参数路由。
 

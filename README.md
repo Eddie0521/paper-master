@@ -2,7 +2,7 @@
   <a href="README_EN.md">🇬🇧 English</a>
 </p>
 
-# Paper-Reader
+# Paper-Master
 
 > 论文全知者 Claude Code skill——精读、问答、跨篇综合、领域探索，统一管理。
 

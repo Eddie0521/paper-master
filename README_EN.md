@@ -2,7 +2,7 @@
   <a href="README.md">🇨🇳 中文</a>
 </p>
 
-# Paper-Reader
+# Paper-Master
 
 > An omniscient paper Claude Code skill — deep read, Q&A, cross-paper synthesis, and domain exploration, all in one place.
 
