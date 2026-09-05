@@ -1,7 +1,6 @@
 ---
 name: paper-master
-description: 论文全知者——精读、问答、跨篇综合、领域探索。带 URL/路径或自然语言开新任务，无参数续读精读。
-disable-model-invocation: true
+description: 论文全知者——精读/问答/跨篇综合/领域探索四模式共用一个 skill。触发场景（白名单）：用户给出论文 URL（arXiv/PDF 链接）或本地 PDF/markdown 路径要求精读；就已入库论文的内容提问；要求跨论文对比、共性归纳、横评综合；指定 topic 或领域要求探索成图；用户显式说「用 paper-master」「精读这篇」「续读」等。不触发：与具体论文无关的学术闲聊、写作润色、通用问答。
 ---
 
 # Paper-Master
@@ -31,7 +30,7 @@ disable-model-invocation: true
 
 ## 路由
 
-解析 `/paper-master` 参数，按以下规则选模式（流程细节见 `references/` 对应文件）：
+解析入口信号（用户消息中携带的 URL/路径/自然语言，或显式调用意图），按以下规则选模式（流程细节见 `references/` 对应文件）：
 
 | 信号 | 模式 | 参考 |
 |---|---|---|
